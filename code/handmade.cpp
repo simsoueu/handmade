@@ -1,35 +1,5 @@
 #include "handmade.h"
-
-inline int32
-TruncateReal32ToInt32(real32 Real32)
-{
-    int32 Result = (int32)Real32;
-    return (Result);
-}
-
-#include <math.h>
-inline int32
-FloorReal32ToInt32(real32 Real32)
-{
-    int32 Result = (int32)floorf(Real32);
-    return (Result);
-}
-
-inline int32
-RoundReal32ToInt32(real32 Real32)
-{
-    int32 Result = (int32)(Real32 + 0.5f);
-    // TODO(george): Intrinsic?
-    return (Result);
-}
-
-inline uint32
-RoundReal32ToUInt32(real32 Real32)
-{
-    uint32 Result = (uint32)(Real32 + 0.5f);
-    // TODO(george): Intrinsic?
-    return (Result);
-}
+#include "handmade_intrinsics.h"
 
 internal void
 DrawRectangle(game_offscreen_buffer *Buffer,
