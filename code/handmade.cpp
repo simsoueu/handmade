@@ -315,8 +315,8 @@ extern "C" GAME_UPDATE_AND_RENDER(GameUpdateAndRender)
             {
                 dPlayerX = 1.0f;
             }
-            dPlayerX *= 10.0f;
-            dPlayerY *= 10.0f;
+            dPlayerX *= 3.0f;
+            dPlayerY *= 3.0f;
 
             canonical_position NewPos = GameState->PlayerPos;
 
@@ -360,6 +360,11 @@ extern "C" GAME_UPDATE_AND_RENDER(GameUpdateAndRender)
                 Gray = 1.0f;
             }
 
+            if ((Column == GameState->PlayerPos.TileX) && (Row == GameState->PlayerPos.TileY))
+            {
+                Gray = 0.0f;
+            }
+
             real32 MinX = World.UpperLeftX + (real32)Column * World.TileSizeInPixels;
             real32 MinY = World.UpperLeftY + (real32)Row * World.TileSizeInPixels;
             real32 MaxX = MinX + World.TileSizeInPixels;
@@ -374,10 +379,10 @@ extern "C" GAME_UPDATE_AND_RENDER(GameUpdateAndRender)
     real32 PlayerB = 0.0f;
 
     real32 PlayerLeft = World.UpperLeftX + World.TileSizeInPixels * GameState->PlayerPos.TileX + 
-        World.MetersToPixels * GameState->PlayerPos.X - 0.5f * PlayerWidth;
-            
+        World.MetersToPixels * GameState->PlayerPos.X - 0.5f * PlayerWidth * World.MetersToPixels;
+
     real32 PlayerTop = World.UpperLeftY + World.TileSizeInPixels * GameState->PlayerPos.TileY + 
-        World.MetersToPixels * GameState->PlayerPos.Y - PlayerHeight;
+        World.MetersToPixels * GameState->PlayerPos.Y - PlayerHeight * World.MetersToPixels;
 
     DrawRectangle(Buffer, PlayerLeft, PlayerTop, 
         PlayerLeft + World.MetersToPixels*PlayerWidth,
