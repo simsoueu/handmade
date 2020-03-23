@@ -91,11 +91,7 @@ struct raw_position
 struct game_state
 {
     // TODO(george): Player state should be canonical position now?
-    int32 PlayerTileMapX;
-    int32 PlayerTileMapY;
-
-    real32 PlayerX;
-    real32 PlayerY;
+    canonical_position PlayerPos;
 };
 
 struct tile_map
@@ -105,11 +101,12 @@ struct tile_map
 
 struct world
 {
-    real32 TileSideInMeters;
-    int32 TileSideInPixels;
+    real32 TileSizeInMeters;
+    int32  TileSizeInPixels;
+    real32 MetersToPixels;
 
-    int32 CountX;
-    int32 CountY;
+    int32  CountX;
+    int32  CountY;
 
     real32 UpperLeftX;
     real32 UpperLeftY;
