@@ -63,7 +63,7 @@ inline game_controller_input *GetController(game_input *Input, unsigned int Cont
 //
 //
 
-struct canonical_position
+struct world_position
 {
     int32 TileMapX;
     int32 TileMapY;
@@ -91,7 +91,7 @@ struct raw_position
 struct game_state
 {
     // TODO(george): Player state should be canonical position now?
-    canonical_position PlayerPos;
+    world_position PlayerPos;
 };
 
 struct tile_map
@@ -108,8 +108,8 @@ struct world
     int32  CountX;
     int32  CountY;
 
-    real32 UpperLeftX;
-    real32 UpperLeftY;
+    real32 LowerLeftX;
+    real32 LowerLeftY;
 
     // TODO(george): Beginner's sparseness
     int32 TileMapCountX;
